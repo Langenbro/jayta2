@@ -33,7 +33,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 10px;
+            margin-top: 0px;
             padding: 0 20px;
             box-sizing: border-box;
             position: relative;
@@ -42,12 +42,8 @@
         .logo-container {
             display: flex;
             align-items: center;
-            margin-left: 20px;
+            margin-left: 50px;
             color: #ffffff;
-        }
-
-        .logo-container h1 {
-            font-size: 25px;
         }
 
         .logo {
@@ -60,7 +56,7 @@
             display: flex;
             align-items: center;
             position: relative;
-            width: calc(100% - 620px); /* Adjusting width to fit screen */
+            width: calc(100% - 700px); /* Adjusting width to fit screen */
             max-width: 1800px;
         }
 
@@ -91,7 +87,6 @@
             color: white;
             text-decoration: none;
         }
-
         nav ul li a:hover {
             text-decoration: underline;
             text-decoration-color: red;
@@ -206,15 +201,18 @@
         }
 
         main {
+            text-align: center;
+            padding-top: 50px;
             position: relative;
             width: 100%;
             height: calc(100vh - 80px); /* Adjusted height to fit screen */
+            overflow-y: auto;
         }
 
         .left-widget {
             position: absolute;
             top: 50px;
-            left: 20px;
+            left: 50px;
             width: 1000px;
             height: 700px;
             background-color: #0069cc;
@@ -348,7 +346,8 @@
         }
 
         .play-controls img {
-            width: 40px;
+            width:
+            40px;
             height: 40px;
             margin-right: 10px;
         }
@@ -377,187 +376,337 @@
             box-sizing: border-box;
             text-align: center;
             display: block; /* or inline-block */
-            position: relative; /* or absolute, fixed */
-            visibility: visible;
-        }
-        .hamburger-menu {
-            display: none; /* Initially hidden */
-            cursor: pointer;
-            padding: 20px;
+    position: relative; /* or absolute, fixed */
+    visibility: visible;
         }
 
-        .hamburger-menu .material-icons {
-            font-size: 36px;
-            color: white;
+        .column {
+            display: inline-block;
+            vertical-align: top;
+            width: 24%;
+            margin: 0 1%;
+            box-sizing: border-box;
         }
 
-        .side-menu {
-            display: none; /* Initially hidden */
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #003363b4;
-            box-shadow: -2px 0 5px rgba(0,0,0,0.5);
-            z-index: 1000;
+        .column h3 {
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
         }
 
-        .side-menu ul {
+        .column ul {
             list-style: none;
-            padding: 20px;
+            padding: 0;
             margin: 0;
         }
 
-        .side-menu ul li {
-            margin: 20px 0;
+        .column ul li {
+            margin: 10px 0;
         }
 
-        .side-menu ul li a {
+        .column ul li a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .nav-container {
-                width: 100%;
-            }
-
-            nav {
-                width: 100%;
-            }
-
-            .action-buttons {
-                position: static;
-                margin-top: 10px;
-            }
-
-            .action-buttons button {
-                padding: 10px;
-                margin: 5px;
-            }
-
-            .left-widget {
-                width: 70%;
-                left: 10%;
-                top: 20px;
-            }
-
-            .right-widget {
-                width: 80%;
-                left: 10%;
-                top: 50%;
-            }
-
-            .object-widget {
-                width: 200px;
-                height: 50px;
-                padding: 10px;
-            }
-
-            #down-arrow-button {
-                top: 750px;
-                left: 85%;
-            }
+        .column ul li a:hover {
+            text-decoration: underline;
         }
 
-
-        @media (max-width: 768px) {
-            .left-widget {
-                width: 90%;
-                left: 5%;
-                top: 325px;
-                height: auto;
-            }
-            .right-widget {
-                width: 80%;
-                left: 10%;
-                top: 10px;
-                height: 40%;
-            }
-
-            .action-buttons, .object-widget {
-                display: none;
-            }
-            .logo-container {
-                margin-left: 25px; /* Adjust margin as needed */
-
-            }
-
-            .logo-container h1 {
-                font-size: 20px; /* Adjust the font size for smaller screens */
-
-                padding-right: 45px;
-            }
-
-            .logo {
-                width: 60px; /* Adjust the logo size */
-                height: 30px;
-                margin-right: 10px; /* Adjust margin as needed */
-            }
-
-            #down-arrow-button {
-                margin-left: 42px;
-                top: 85.5%;
-            }
-            .hamburger-menu {
-                    display: block; /* Displayed on small screens */
-                    margin-right: 0px;
-                    
-                }
-                .nav-container {
-        justify-content: space-between; /* Adjust as needed */
-
-    }
-                .side-menu.show {
-                    display: block; /* Show side menu when 'show' class is applied */
-                }
-            }  
-
-        @media (max-width: 480px) {
-            header {
-                flex-direction: column;
-            }
-
-            .nav-container {
-                display: none;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-
-            .action-buttons button {
-                width: 100%;
-                margin: 5px 0;
-            }
-
-            .left-widget h2 {
-                font-size: 30px;
-            }
-
-            .left-widget h3 {
-                font-size: 2em;
-            }
-
-            .left-widget button {
-                width: 150px;
-                font-size: 1em;
-            }
-
-            .object-widget {
-                width: 100px;
-                height: 40px;
-                font-size: 12px;
-                padding: 5px;
-            }
-
-            #down-arrow-button {
-                left: 70%;
-            }
+        footer p {
+            margin-top: 20px;
+            font-size: 0.9em;
         }
+        .trending-widget {
+            width: 20%;
+            margin: 10px;
+            display: inline-block;
+            vertical-align: top;
+            background-color: #003363b4;
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .trending-widget img {
+            width: 100%;
+            height: auto;
+            
+        }
+
+        .trending-widget .caption {
+            font-size: 2.0em;
+            font-weight: 300;
+            padding: 10px;
+        }
+        .top-widget h3 {
+            font-weight: 700;
+            font-size: 5.5em;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+        
+
+.reel {
+    width: 30%;
+    margin: 10px;
+    background-color: #003363b4;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.left-widget-reels {
+            position: absolute;
+            width: 50%;
+            background-color: #0069cc;
+            left: 50px;
+            box-sizing: border-box;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+        .left-widget-reels h1 {
+
+font-weight: 700;
+font-size: 2.5em;
+
+}
+        .left-widget-reels h2 {
+
+            font-weight: 700;
+            font-size: 3.5em;
+            margin-top: 150px;
+            margin-bottom: 1px;
+        }
+        .left-widget-reels h3 {
+
+font-weight: 700;
+font-size: 5.5em;
+margin-bottom: 10px;
+margin-top: 10px;
+
+}
+.reels-container {
+position: absolute;
+flex-wrap: wrap;
+margin-top: 0%;
+left: 1075px;
+width: 46%;
+height: 100%;
+background-color: #0069cc;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+border-radius: 10px;
+}
+
+.reel {
+width: 50%;
+height: 750px;
+}
+
+.reel-video {
+width: auto;
+height: 100%;
+}
+
+.video-title {
+position: absolute;
+top: 600px;
+left: 10;
+background-color: #0000006c;
+color: #fff;
+padding: 10px;
+font-size: 18px;
+}
+
+
+.reel-actions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px;
+    background-color: #003363b4;
+    
+}
+
+.video-controls {
+position: absolute;
+top: 0;
+left: 10;
+background-color: #000;
+color: #fff;
+padding: 10px;
+display: flex;
+    justify-content: space-around;
+    
+    
+    
+align-items: center;
+}
+.share, .comment, .like {
+margin: 0 10px;
+cursor: pointer;
+}
+.share:hover, .comment:hover, .like:hover {
+color: #ccc;
+}
+.reel-action .material-icons {
+    font-size: 18px;
+}
+
+.podcast-categories {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.podcast-category {
+    background-color: #003363b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.podcast-category:hover {
+    background-color: red;
+}
+
+.podcast-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.podcast-item {
+    width: 30%;
+    margin: 10px;
+    background-color: #003363b4;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-align: center;
+}
+
+.podcast-item img {
+    width: 100%;
+    height: auto;
+}
+
+.podcast-caption {
+    padding: 10px;
+    background-color: #003363b4;
+}
+#listen-live {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.live-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #003363b4;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+#dj-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.live-player {
+    width: 100%;
+    max-width: 600px;
+}
+
+#contact {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#contactForm button {
+    padding: 10px 20px;
+    background-color: #003363b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#contactForm button:hover {
+    background-color: red;
+}
+
+.contact-options {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-option {
+    color: white;
+    background-color: #003363b4;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-option:hover {
+    background-color: red;
+}
+
+.contact-option .material-icons {
+    font-size: 18px;
+}
+
     </style>
 </head>
 <body>
@@ -565,34 +714,16 @@
         <div class="logo-container">
             <img src="logo.png" alt="Logo" class="logo">
             <h1>MADIBENG FM</h1>
-            <div class="hamburger-menu" onclick="toggleNav()">
-                <span class="material-icons">menu</span>
-            </div>
-        </div>
-
-        <div class="side-menu" id="side-menu">
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="trending.html">Trending</a></li>
-                <li><a href="reels.html">Reels</a></li>
-                <li><a href="podcast.html">Podcast</a></li>
-                <li><a href="listen-live.html">Listen-Live</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                
-            </ul>
         </div>
         <div class="nav-container">
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="trending.html">Trending</a></li>
-                <li><a href="reels.html">Reels</a></li>
-                <li><a href="podcast.html">Podcast</a></li>
-            </ul>
-            
-        </nav>
-        
-        
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#trending">Trending</a></li>
+                    <li><a href="#reels">Reels</a></li>
+                    <li><a href="#podcast">Podcast</a></li>
+                </ul>
+            </nav>
             <div class="search-container">
                 <div class="search-icon" onclick="toggleSearchBox()">
                     <span class="material-icons">search</span>
@@ -606,12 +737,9 @@
             <button onclick="scrollToSection('listen-live')">Listen Live</button>
             <button onclick="scrollToSection('contact')">Contact</button>
         </div>
-        
-        
     </header>
 
     <main>
-        <section id="home">
         <div id="home">
             <div class="left-widget">
                 <h2>Welcome to Madibeng FM 105.30</h2>
@@ -619,116 +747,322 @@
                 <p>Listen to stories about Brits, Bojanala as a whole, music omonate, Motswako.</p>
                 <button>Listen Now</button>
             </div>
-            <div class="object-widget" style="top: 800px; left: 35px;" onclick="navigateTo('interviews')">
+            <div class="object-widget" style="top: 800px; left: 65px;" onclick="navigateTo('interviews')">
                 <a href="#interviews">Interviews</a>
             </div>
-            <div class="object-widget" style="top: 800px; left: 375px;" onclick="navigateTo('live-shows')">
+            <div class="object-widget" style="top: 800px; left: 405px;" onclick="navigateTo('live-shows')">
                 <a href="#live-shows">Live Shows</a>
             </div>
-            <div class="object-widget" style="top: 800px; left: 715px;">
+            
+            
+            <div class="object-widget" style="top: 800px; left: 745px;">
                 <div class="play-controls" id="playControls">
                     <img src="dj.jpg" alt="DJ" id="currentDJ">
                     <i class="material-icons" id="playPauseIcon" onclick="togglePlayPause()">play_arrow</i>
                     <audio id="audioPlayer" src="https://sv2.famcast.co.za/proxy/madibeng?mp=/stream" preload="none"></audio>
+
                     <div class="volume-controls" id="volumeControls">
                         <button onclick="decreaseVolume()"><i class="material-icons">volume_down</i></button>
                         <button onclick="increaseVolume()"><i class="material-icons">volume_up</i></button>
                     </div>
+                    
                 </div>
             </div>
             <div class="right-widget">
-                <img src="image1.jpg" alt="Slideshow Image" class="slideshow-image">
-                <img src="image2.jpg" alt="Slideshow Image" class="slideshow-image">
-                <img src="image3.jpg" alt="Slideshow Image" class="slideshow-image">
+                <img src="image1.jpg" alt="Slideshow Image" class="slideshow-image" id="slideshow-image">
             </div>
         </div>
-    </section>
+        <div id="trending">
+            <div class="top-widget">
+            <h3>Trending this week<br>On Radio Madibeng FM 105.3</h3>
+            </div>
+            <div id="trending-widgets-container">
+                <div class="trending-widget">
+                    <img src="image1.jpg" alt="Placeholder Image">
+                    <div class="caption">Placeholder caption for top post</div>
+                </div>
+                <div class="trending-widget">
+                    <img src="image2.jpg" alt="Placeholder Image">
+                    <div class="caption">Placeholder caption for second top post</div>
+                </div>
+                <div class="trending-widget">
+                    <img src="image3.jpg" alt="Placeholder Image">
+                    <div class="caption">Placeholder caption for third top post</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="reels">
+            <div class="left-widget-reels">
+                <h2>Stay Informed, Stay Visual!</h2>
+                <h3>Get Your Local News Fix with Amazing Reels!</h3>
+                <h1>Only on Radio Madibeng FM 105.3</h1>
+            </div>
+            <div class="reels-container">
+                <div class="video-title">Fire inciden May 14 2024
+                    <div class="reel-action"><span class="material-icons">share</span> Share</div>
+                    <div class="reel-action"><span class="material-icons">comment</span> Comment</div>
+                    <div class="reel-action"><span class="material-icons">favorite</span> Like</div></div>                                               
+                <div class="reel">
+                    <video class="reel-video" controls>
+                        <source src="Seq.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div id="podcast">
+            <h2>Podcast Section</h2>
+            <div class="podcast-categories">
+                <button class="podcast-category" onclick="showCategory('interviews')">Interviews</button>
+                <button class="podcast-category" onclick="showCategory('live-shows')">Live Shows</button>
+            </div>
+            <div class="podcast-content" id="interviews">
+                <div class="podcast-item" onclick="playPodcast('interview1.mp3')">
+                    <img src="image1.jpg" alt="Interview Thumbnail">
+                    <div class="podcast-caption">Interview Title 1</div>
+                </div>
+                <!-- Repeat for more podcast items -->
+            </div>
+            <div class="podcast-content" id="live-shows" style="display:none;">
+                <div class="podcast-item" onclick="playPodcast('liveshow1.mp3')">
+                    <img src="thumbnail2.jpg" alt="Live Show Thumbnail">
+                    <div class="podcast-caption">Live Show Title 1</div>
+                </div>
+                <!-- Repeat for more podcast items -->
+            </div>
+            <audio id="podcastPlayer" controls style="display:none;"></audio>
+        </div>
+        
+        <div id="listen-live">
+            <h2>Listen Live</h2>
+            <div class="live-container">
+                <img id="dj-image" src="current-dj.jpg" alt="Current DJ" />
+                <div class="live-player">
+                    <audio id="liveStreamPlayer" controls>
+                        <source src="live-stream-url.mp3" type="audio/mpeg">
+                        Your browser does not support the audio tag.
+                    </audio>
+                </div>
+            </div>
+        </div>
+        
+        <div id="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <div class="contact-options">
+                <a href="https://wa.me/your-whatsapp-number" class="contact-option"><span class="material-icons">whatsapp</span> WhatsApp</a>
+                <a href="tel:your-phone-number" class="contact-option"><span class="material-icons">call</span> Call</a>
+            </div>
+        </div>
+        
         <button id="down-arrow-button" onclick="scrollToNextSection()">
             <span class="material-icons">expand_more</span>
         </button>
-
-        <section id="trending"></section>
-        <section id="reels"></section>
-        <section id="podcast"></section>
-        <section id="live-listen"></section>
-        <section id="contact"></section>
     </main>
+
+    <footer>
+        <div class="column">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#careers">Careers</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="#streaming">Streaming</a></li>
+                <li><a href="#advertising">Advertising</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#help">Help Center</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>Contact</h3>
+            <ul>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="#locations">Locations</a></li>
+            </ul>
+        </div>
+        <p>&copy; 2024 Radio Station. All rights reserved.</p>
+    </footer>
+
     <script>
-        function toggleSearchBox() {
-            const searchBox = document.querySelector('.search-box');
-            searchBox.style.display = searchBox.style.display === 'none' || searchBox.style.display === '' ? 'block' : 'none';
-        }
+        
 
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.right-widget .slideshow-image');
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.opacity = i === index ? '1' : '0';
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        setInterval(nextSlide, 3000); // Change slide every 3 seconds
-
-        function navigateTo(section) {
-            // Add logic to navigate to the respective section
-            alert('Navigating to ' + section);
-        }
-
-        function togglePlayPause() {
-            const audioPlayer = document.getElementById('audioPlayer');
-            const playPauseIcon = document.getElementById('playPauseIcon');
-            const volumeControls = document.getElementById('volumeControls');
-
-            if (playPauseIcon.textContent === 'play_arrow') {
-                playPauseIcon.textContent = 'pause';
-                audioPlayer.play();
-                volumeControls.style.display = 'flex';
-            } else {
-                playPauseIcon.textContent = 'play_arrow';
-                audioPlayer.pause();
-                volumeControls.style.display = 'none';
-            }
-        }
-
-        function increaseVolume() {
-            const audioPlayer = document.getElementById('audioPlayer');
-            if  (audioPlayer.volume < 1) {
-                audioPlayer.volume += 0.1; // Increase volume by 0.1 (10%)
-            }
-        }
-
-        function decreaseVolume() {
-            const audioPlayer = document.getElementById('audioPlayer');
-            if (audioPlayer.volume > 0) {
-                audioPlayer.volume -= 0.1; // Decrease volume by 0.1 (10%)
-            }
-        }
-
+        
         function scrollToNextSection() {
-            window.scrollBy(0, window.innerHeight);
+            var nextSection = document.querySelector('main > div:not(:first-child)');
+            nextSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function toggleNav() {
-            const sideMenu = document.getElementById('side-menu');
-            sideMenu.classList.toggle('show');
+        function toggleSearchBox() {
+            var searchBox = document.getElementById('search-box');
+            if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+                searchBox.style.display = 'block';
+            } else {
+                searchBox.style.display = 'none';
+            }
         }
 
-        // Optional: Close the side menu when clicking outside of it
-        document.addEventListener('click', function(event) {
-            const sideMenu = document.getElementById('side-menu');
-            const hamburgerMenu = document.querySelector('.hamburger-menu');
-
-            if (!sideMenu.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-                sideMenu.classList.remove('show');
+        document.addEventListener('scroll', function() {
+            var footer = document.querySelector('footer');
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                footer.style.display = 'block';
+            } else {
+                footer.style.display = 'none';
             }
         });
+        document.addEventListener('DOMContentLoaded', function() {
+    const reels = [
+        { src: 'reel1.mp4', id: 'reel1' },
+        { src: 'reel2.mp4', id: 'reel2' },
+        { src: 'reel3.mp4', id: 'reel3' }
+    ];
+    let currentReelIndex = 0;
 
+    const reelsContainer = document.getElementById('reels-container');
+
+    function createReelElement(reel) {
+        const video = document.createElement('video');
+        video.classList.add('reel-video');
+        video.setAttribute('src', reel.src);
+        video.setAttribute('id', reel.id);
+        video.setAttribute('controls', 'true');
+        reelsContainer.appendChild(video);
+    }
+
+    function showReel(index) {
+        const videos = document.querySelectorAll('.reel-video');
+        videos.forEach((video, idx) => {
+            video.classList.toggle('active', idx === index);
+        });
+    }
+
+    reels.forEach(createReelElement);
+    showReel(currentReelIndex);
+
+    window.nextReel = function() {
+        currentReelIndex = (currentReelIndex + 1) % reels.length;
+        showReel(currentReelIndex);
+    };
+
+    window.prevReel = function() {
+        currentReelIndex = (currentReelIndex - 1 + reels.length) % reels.length;
+        showReel(currentReelIndex);
+    };
+
+    window.shareReel = function() {
+        const currentReel = reels[currentReelIndex];
+        alert(`Sharing ${currentReel.id}`);
+        // Implement share functionality here
+    };
+
+    window.commentReel = function() {
+        const currentReel = reels[currentReelIndex];
+        const comment = prompt('Enter your comment:');
+        if (comment) {
+            alert(`Commenting on ${currentReel.id}: ${comment}`);
+            // Implement comment functionality here
+        }
+    };
+});
+function showCategory(category) {
+    var categories = document.getElementsByClassName('podcast-content');
+    for (var i = 0; i < categories.length; i++) {
+        categories[i].style.display = 'none';
+    }
+    document.getElementById(category).style.display = 'flex';
+}
+
+function playPodcast(audioSrc) {
+    var podcastPlayer = document.getElementById('podcastPlayer');
+    podcastPlayer.src = audioSrc;
+    podcastPlayer.style.display = 'block';
+    podcastPlayer.play();
+}
+// Example of DJ schedule
+const djSchedule = [
+    { startTime: '06:00', endTime: '10:00', imageUrl: 'dj1.jpg', streamUrl: 'stream-url-1.mp3' },
+    { startTime: '10:00', endTime: '14:00', imageUrl: 'dj2.jpg', streamUrl: 'stream-url-2.mp3' },
+    { startTime: '14:00', endTime: '18:00', imageUrl: 'dj3.jpg', streamUrl: 'stream-url-3.mp3' },
+    // Add more schedules as needed
+];
+
+// Function to update DJ image and stream based on current time
+function updateLiveStream() {
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+    const currentMinutes = currentTime.getMinutes();
+    const currentTimeString = `${currentHour.toString().padStart(2, '0')}:${currentMinutes.toString().padStart(2, '0')}`;
+
+    for (const schedule of djSchedule) {
+        if (currentTimeString >= schedule.startTime && currentTimeString < schedule.endTime) {
+            document.getElementById('dj-image').src = schedule.imageUrl;
+            const liveStreamPlayer = document.getElementById('liveStreamPlayer');
+            liveStreamPlayer.src = schedule.streamUrl;
+            liveStreamPlayer.play();
+            break;
+        }
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const footer = document.querySelector('footer');
+    const contactSection = document.getElementById('contact');
+
+    function checkFooterVisibility() {
+        const contactRect = contactSection.getBoundingClientRect();
+        const isInViewport = (
+            contactRect.top >= 0 &&
+            contactRect.left >= 0 &&
+            contactRect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            contactRect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+
+        if (isInViewport) {
+            footer.style.display = 'block';
+        } else {
+            footer.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('scroll', checkFooterVisibility);
+    window.addEventListener('resize', checkFooterVisibility);
+    checkFooterVisibility(); // Initial check
+});
+
+// Initial update and set interval to check every minute
+updateLiveStream();
+setInterval(updateLiveStream, 60000);
 
     </script>
 </body>
