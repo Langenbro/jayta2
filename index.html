@@ -3,265 +3,1067 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HarmonyAI</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <title>Radio Station</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-}
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            background-color: #0069cc;
+            overflow: hidden;
+            width: 100%;
+            max-width: 2000px;
+            text-align: center;
+            padding: 0px;
+            position: fixed;
+            left: 50%;
+            transform: translate(-50%);
+        }
 
-.container {
-    display: flex;
-    height: 100vh;
-}
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
 
-.left-side {
-    flex: 1;
-    position: relative;
-    color: #fff;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-left: 50px;
+            color: #ffffff;
+        }
+
+        .logo {
+            width: 80px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: calc(100% - 700px); /* Adjusting width to fit screen */
+            max-width: 1800px;
+        }
+
+        nav {
+            width: 600px; /* Adjusted width to fit more items */
+            height: 50px;
+            background-color: #003363b4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 25px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+            text-decoration-color: red;
+        }
+
+        .action-buttons button:hover {
+            background-color: red;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+        }
+
+        .search-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #003363b4;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .search-box {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            width: 200px;
+            background-color: #003363b4;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #003363b4;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .quick-links {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            color: aliceblue;
+            font-weight: bold;
+        }
+
+        .quick-links li {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+            color: aliceblue;
+        }
+
+        .quick-links li .material-icons {
+            margin-right: 10px;
+            color: aliceblue;
+        }
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            right: 35px;
+        }
+
+        .action-buttons button {
+            background-color: #003363b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 0px;
+            margin: 0px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #home, #trending, #reels, #podcast, #live-listen, #contact {
+            height: 100vh;
+            background-color: #0069cc;
+        }
+
+        #down-arrow-button {
+            position: absolute;
+            top: 800px;
+            left: 1835px;
+            height: 40px;
+            width: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            background-color: #003363b4;
+            color: white;
+            border-radius: 50%;
+        }
+
+        .material-icons {
+            font-size: 24px; /* Adjust the size of the icon if necessary */
+            color: #ffffff; /* Change the color if necessary */
+        }
+
+        main {
+            text-align: center;
+            padding-top: 50px;
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 80px); /* Adjusted height to fit screen */
+            overflow-y: auto;
+        }
+
+        .left-widget {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 1000px;
+            height: 700px;
+            background-color: #0069cc;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .left-widget button:hover {
+            background-color: #ff0000;
+        }
+
+        .left-widget h2 {
+            font-weight: 300;
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .left-widget h3 {
+            font-weight: 700;
+            font-size: 5.5em;
+            margin-top: 20px;
+        }
+
+        .left-widget p {
+            font-weight: 300;
+            margin-top: 1px;
+        }
+
+        .left-widget button {
+            background-color: #ffffff;
+            width: 200px;
+            color: #003363b4;
+            border: none;
+            padding: 15px 30px;
+            margin-top: 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        .right-widget {
+            position: absolute;
+            top: 50px;
+            left: 1075px;
+            width: 800px;
+            height: 700px;
+            background-color: 0069cc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 0px;
+        }
+
+        .right-widget img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+        }
+
+        .object-widget {
+            position: absolute;
+            width: 280px;
+            height: 60px;
+            background-color: #003363b4;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .object-widget:hover {
+            background-color: #ff0000;
+        }
+
+        .object-widget a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+        }
+
+        .wave-animation {
+            width: 100px;
+            height: 20px;
+            background: url('wave.png') repeat-x;
+            animation: wave 1s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 0; }
+        }
+
+        .media-controls {
+            background-color: #00336300;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .media-controls button {
+            background-color: #00336300;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .play-controls {
+            background-color: #00336300;
+            display: flex;
+            align-items: center;
+        }
+
+        .play-controls img {
+            width:
+            40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .volume-controls {
+            background-color: #00336300;
+            display: none;
+            margin-left: 10px;
+        }
+
+        .volume-controls button {
+            background-color: #00336300;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        footer {
+            background-color: #003363;
+            color: white;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            display: block; /* or inline-block */
+    position: relative; /* or absolute, fixed */
+    visibility: visible;
+        }
+
+        .column {
+            display: inline-block;
+            vertical-align: top;
+            width: 24%;
+            margin: 0 1%;
+            box-sizing: border-box;
+        }
+
+        .column h3 {
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .column ul li {
+            margin: 10px 0;
+        }
+
+        .column ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .column ul li a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        .trending-widget {
+            width: 20%;
+            margin: 10px;
+            display: inline-block;
+            vertical-align: top;
+            background-color: #003363b4;
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .trending-widget img {
+            width: 100%;
+            height: auto;
+            
+        }
+
+        .trending-widget .caption {
+            font-size: 2.0em;
+            font-weight: 300;
+            padding: 10px;
+        }
+        .top-widget h3 {
+            font-weight: 700;
+            font-size: 5.5em;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+        
+
+.reel {
+    width: 30%;
+    margin: 10px;
+    background-color: #003363b4;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 0 20px;
-    background: url(Web-images/harmony.jpg) center/cover;
+    align-items: center;
+}
+.left-widget-reels {
+            position: absolute;
+            width: 50%;
+            background-color: #0069cc;
+            left: 50px;
+            box-sizing: border-box;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+        .left-widget-reels h1 {
+
+font-weight: 700;
+font-size: 2.5em;
+
+}
+        .left-widget-reels h2 {
+
+            font-weight: 700;
+            font-size: 3.5em;
+            margin-top: 150px;
+            margin-bottom: 1px;
+        }
+        .left-widget-reels h3 {
+
+font-weight: 700;
+font-size: 5.5em;
+margin-bottom: 10px;
+margin-top: 10px;
+
+}
+.reels-container {
+position: absolute;
+flex-wrap: wrap;
+margin-top: 0%;
+left: 1075px;
+width: 46%;
+height: 100%;
+background-color: #0069cc;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+border-radius: 10px;
 }
 
-.left-side h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.reel {
+width: 50%;
+height: 750px;
 }
 
-.left-side p {
+.reel-video {
+width: auto;
+height: 100%;
+}
+
+.video-title {
+position: absolute;
+top: 600px;
+left: 10;
+background-color: #0000006c;
+color: #fff;
+padding: 10px;
+font-size: 18px;
+}
+
+
+.reel-actions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px;
+    background-color: #003363b4;
+    
+}
+
+.video-controls {
+position: absolute;
+top: 0;
+left: 10;
+background-color: #000;
+color: #fff;
+padding: 10px;
+display: flex;
+    justify-content: space-around;
+    
+    
+    
+align-items: center;
+}
+.share, .comment, .like {
+margin: 0 10px;
+cursor: pointer;
+}
+.share:hover, .comment:hover, .like:hover {
+color: #ccc;
+}
+.reel-action .material-icons {
     font-size: 18px;
-    margin-bottom: 20px;
 }
 
-.right-side {
-    flex: 1;
+.podcast-categories {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.form-container {
-    width: 400px;
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.input-field {
-    position: relative;
     margin-bottom: 20px;
 }
 
-.input-field input {
-    width: calc(100% - 20px);
+.podcast-category {
+    background-color: #003363b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.podcast-category:hover {
+    background-color: red;
+}
+
+.podcast-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.podcast-item {
+    width: 30%;
+    margin: 10px;
+    background-color: #003363b4;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-align: center;
+}
+
+.podcast-item img {
+    width: 100%;
+    height: auto;
+}
+
+.podcast-caption {
+    padding: 10px;
+    background-color: #003363b4;
+}
+#listen-live {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.live-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #003363b4;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+#dj-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.live-player {
+    width: 100%;
+    max-width: 600px;
+}
+
+#contact {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    outline: none;
-    font-size: 16px;
-    padding-left: 40px;
 }
 
-.input-field i {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 10px;
-    color: #888;
-}
-
-.btn {
-    width: 100%;
-    padding: 10px;
+#contactForm button {
+    padding: 10px 20px;
+    background-color: #003363b4;
+    color: white;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.btn:hover {
-    background-color: #45a049;
+#contactForm button:hover {
+    background-color: red;
 }
 
-.bottom-text {
-    text-align: center;
+.contact-options {
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.bottom-text a {
-    color: #4CAF50;
+.contact-option {
+    color: white;
+    background-color: #003363b4;
+    padding: 10px 20px;
+    border-radius: 5px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.bottom-text a:hover {
-    text-decoration: underline;
+.contact-option:hover {
+    background-color: red;
 }
 
-.form-link {
-    color: #4CAF50;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.form-link:hover {
-    text-decoration: underline;
-}
-
-.message {
-    margin-top: 10px;
-    color: red;
+.contact-option .material-icons {
+    font-size: 18px;
 }
 
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="left-side">
-            <h1>Welcome to HarmonyAI</h1>
-            <p>HarmonyAI is an AI-driven platform for stress detection and management. Expect personalized advice and interactive activities to help you manage stress effectively.</p>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1>MADIBENG FM</h1>
         </div>
-        <div class="right-side">
-            <div class="form-container" id="formContainer">
-                <h1 id="formTitle">Sign Up</h1>
-                <form id="form" onsubmit="return submitForm()">
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" id="registerUsername" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" id="registerEmail" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" id="registerPassword" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Confirm Password" id="registerConfirmPassword" required>
-                    </div>
-                    <button type="submit" class="btn" id="submitButton">Sign Up</button>
-                </form>
-                <div class="bottom-text">
-                    <p id="switchText">Already have an account? <a href="#" class="form-link" onclick="switchForm()">Log In</a></p>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#trending">Trending</a></li>
+                    <li><a href="#reels">Reels</a></li>
+                    <li><a href="#podcast">Podcast</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <div class="search-icon" onclick="toggleSearchBox()">
+                    <span class="material-icons">search</span>
                 </div>
-                <div id="registerMessage" class="message"></div>
+                <div class="search-box" id="search-box">
+                    <input type="text" placeholder="Search...">
+                </div>
             </div>
         </div>
-    </div>
+        <div class="action-buttons">
+            <button onclick="scrollToSection('listen-live')">Listen Live</button>
+            <button onclick="scrollToSection('contact')">Contact</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="home">
+            <div class="left-widget">
+                <h2>Welcome to Madibeng FM 105.30</h2>
+                <h3>The Ultimate Radio FM, Ke Motswako Fela</h3>
+                <p>Listen to stories about Brits, Bojanala as a whole, music omonate, Motswako.</p>
+                <button>Listen Now</button>
+            </div>
+            <div class="object-widget" style="top: 800px; left: 65px;" onclick="navigateTo('interviews')">
+                <a href="#interviews">Interviews</a>
+            </div>
+            <div class="object-widget" style="top: 800px; left: 405px;" onclick="navigateTo('live-shows')">
+                <a href="#live-shows">Live Shows</a>
+            </div>
+            
+            
+            <div class="object-widget" style="top: 800px; left: 745px;">
+                <div class="play-controls" id="playControls">
+                    <img src="dj.jpg" alt="DJ" id="currentDJ">
+                    <i class="material-icons" id="playPauseIcon" onclick="togglePlayPause()">play_arrow</i>
+                    <audio id="audioPlayer" src="https://sv2.famcast.co.za/proxy/madibeng?mp=/stream" preload="none"></audio>
+
+                    <div class="volume-controls" id="volumeControls">
+                        <button onclick="decreaseVolume()"><i class="material-icons">volume_down</i></button>
+                        <button onclick="increaseVolume()"><i class="material-icons">volume_up</i></button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="right-widget">
+                <img src="image1.jpg" alt="Slideshow Image" class="slideshow-image" id="slideshow-image">
+            </div>
+        </div>
+        <div id="trending">
+            <div class="top-widget">
+            <h3>Trending this week<br>On Radio Madibeng FM 105.3</h3>
+            </div>
+            <div id="trending-widgets-container">
+                <div class="trending-widget">
+                    <img src="image1.jpg" alt="Placeholder Image">
+                    <div class="caption">Placeholder caption for top post</div>
+                </div>
+                <div class="trending-widget">
+                    <img src="image2.jpg" alt="Placeholder Image">
+                    <div class="caption">Placeholder caption for second top post</div>
+                </div>
+                <div class="trending-widget">
+                    <img src="image3.jpg" alt="Placeholder Image">
+                    <div class="caption">Placeholder caption for third top post</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="reels">
+            <div class="left-widget-reels">
+                <h2>Stay Informed, Stay Visual!</h2>
+                <h3>Get Your Local News Fix with Amazing Reels!</h3>
+                <h1>Only on Radio Madibeng FM 105.3</h1>
+            </div>
+            <div class="reels-container">
+                <div class="video-title">Fire inciden May 14 2024
+                    <div class="reel-action"><span class="material-icons">share</span> Share</div>
+                    <div class="reel-action"><span class="material-icons">comment</span> Comment</div>
+                    <div class="reel-action"><span class="material-icons">favorite</span> Like</div></div>                                               
+                <div class="reel">
+                    <video class="reel-video" controls>
+                        <source src="Seq.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div id="podcast">
+            <h2>Podcast Section</h2>
+            <div class="podcast-categories">
+                <button class="podcast-category" onclick="showCategory('interviews')">Interviews</button>
+                <button class="podcast-category" onclick="showCategory('live-shows')">Live Shows</button>
+            </div>
+            <div class="podcast-content" id="interviews">
+                <div class="podcast-item" onclick="playPodcast('interview1.mp3')">
+                    <img src="image1.jpg" alt="Interview Thumbnail">
+                    <div class="podcast-caption">Interview Title 1</div>
+                </div>
+                <!-- Repeat for more podcast items -->
+            </div>
+            <div class="podcast-content" id="live-shows" style="display:none;">
+                <div class="podcast-item" onclick="playPodcast('liveshow1.mp3')">
+                    <img src="thumbnail2.jpg" alt="Live Show Thumbnail">
+                    <div class="podcast-caption">Live Show Title 1</div>
+                </div>
+                <!-- Repeat for more podcast items -->
+            </div>
+            <audio id="podcastPlayer" controls style="display:none;"></audio>
+        </div>
+        
+        <div id="listen-live">
+            <h2>Listen Live</h2>
+            <div class="live-container">
+                <img id="dj-image" src="current-dj.jpg" alt="Current DJ" />
+                <div class="live-player">
+                    <audio id="liveStreamPlayer" controls>
+                        <source src="live-stream-url.mp3" type="audio/mpeg">
+                        Your browser does not support the audio tag.
+                    </audio>
+                </div>
+            </div>
+        </div>
+        
+        <div id="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <div class="contact-options">
+                <a href="https://wa.me/your-whatsapp-number" class="contact-option"><span class="material-icons">whatsapp</span> WhatsApp</a>
+                <a href="tel:your-phone-number" class="contact-option"><span class="material-icons">call</span> Call</a>
+            </div>
+        </div>
+        
+        <button id="down-arrow-button" onclick="scrollToNextSection()">
+            <span class="material-icons">expand_more</span>
+        </button>
+    </main>
+
+    <footer>
+        <div class="column">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#careers">Careers</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="#streaming">Streaming</a></li>
+                <li><a href="#advertising">Advertising</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#help">Help Center</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>Contact</h3>
+            <ul>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="#locations">Locations</a></li>
+            </ul>
+        </div>
+        <p>&copy; 2024 Radio Station. All rights reserved.</p>
+    </footer>
 
     <script>
-        const users = JSON.parse(localStorage.getItem('users')) || [];
+        
 
-        function switchForm() {
-            const formContainer = document.getElementById('formContainer');
-            formContainer.innerHTML = '';
-            if (formContainer.dataset.formType === 'login') {
-                formContainer.innerHTML = `
-                    <h1 id="formTitle">Sign Up</h1>
-                    <form id="form" onsubmit="return submitForm('register')">
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Username" id="registerUsername" required>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" placeholder="Email" id="registerEmail" required>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" id="registerPassword" required>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Confirm Password" id="registerConfirmPassword" required>
-                        </div>
-                        <button type="submit" class="btn" id="submitButton">Sign Up</button>
-                    </form>
-                    <div class="bottom-text">
-                        <p id="switchText">Already have an account? <a href="#" class="form-link" onclick="switchForm()">Log In</a></p>
-                    </div>
-                    <div id="registerMessage" class="message"></div>
-                `;
-                formContainer.dataset.formType = 'register';
+        
+        function scrollToNextSection() {
+            var nextSection = document.querySelector('main > div:not(:first-child)');
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleSearchBox() {
+            var searchBox = document.getElementById('search-box');
+            if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+                searchBox.style.display = 'block';
             } else {
-                formContainer.innerHTML = `
-                    <h1 id="formTitle">Log In</h1>
-                    <form id="form" onsubmit="return submitForm('login')">
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Username" id="loginUsername" required>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" id="loginPassword" required>
-                        </div>
-                        <button type="submit" class="btn" id="submitButton">Log In</button>
-                    </form>
-                    <div class="bottom-text">
-                        <p id="switchText">Don't have an account? <a href="#" class="form-link" onclick="switchForm()">Sign Up</a></p>
-                    </div>
-                    <div id="loginMessage" class="message"></div>
-                `;
-                formContainer.dataset.formType = 'login';
+                searchBox.style.display = 'none';
             }
         }
 
-        function submitForm(formType) {
-            if (formType === 'register') {
-                const username = document.getElementById("registerUsername").value;
-                const email = document.getElementById("registerEmail").value;
-                const password = document.getElementById("registerPassword").value;
-                const confirmPassword = document.getElementById("registerConfirmPassword").value;
-
-                if (password !== confirmPassword) {
-                    document.getElementById("registerMessage").textContent = "Passwords do not match.";
-                    return false;
-                }
-
-                if (users.some(user => user.username === username)) {
-                    document.getElementById("registerMessage").textContent = "Username already exists. Please choose a different username.";
-                    return false;
-                }
-
-                const newUser = { username, email, password };
-                users.push(newUser);
-                localStorage.setItem('users', JSON.stringify(users));
-
-                document.getElementById("registerMessage").textContent = "Account created successfully. You can now log in.";
-            } else if (formType === 'login') {
-                const username = document.getElementById("loginUsername").value;
-                const password = document.getElementById("loginPassword").value;
-
-                const user = users.find(user => user.username === username && user.password === password);
-
-                if (user) {
-                    document.getElementById("loginMessage").textContent = "Login successful. Redirecting...";
-                    localStorage.setItem('currentUsername', username);
-                    window.location.href = "Home.htm"; // Redirect to the profile page or another destination
-                } else {
-                    document.getElementById("loginMessage").textContent = "Invalid username or password. Please try again.";
-                    return false;
-                }
+        document.addEventListener('scroll', function() {
+            var footer = document.querySelector('footer');
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                footer.style.display = 'block';
+            } else {
+                footer.style.display = 'none';
             }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+    const reels = [
+        { src: 'reel1.mp4', id: 'reel1' },
+        { src: 'reel2.mp4', id: 'reel2' },
+        { src: 'reel3.mp4', id: 'reel3' }
+    ];
+    let currentReelIndex = 0;
 
-            return false;
+    const reelsContainer = document.getElementById('reels-container');
+
+    function createReelElement(reel) {
+        const video = document.createElement('video');
+        video.classList.add('reel-video');
+        video.setAttribute('src', reel.src);
+        video.setAttribute('id', reel.id);
+        video.setAttribute('controls', 'true');
+        reelsContainer.appendChild(video);
+    }
+
+    function showReel(index) {
+        const videos = document.querySelectorAll('.reel-video');
+        videos.forEach((video, idx) => {
+            video.classList.toggle('active', idx === index);
+        });
+    }
+
+    reels.forEach(createReelElement);
+    showReel(currentReelIndex);
+
+    window.nextReel = function() {
+        currentReelIndex = (currentReelIndex + 1) % reels.length;
+        showReel(currentReelIndex);
+    };
+
+    window.prevReel = function() {
+        currentReelIndex = (currentReelIndex - 1 + reels.length) % reels.length;
+        showReel(currentReelIndex);
+    };
+
+    window.shareReel = function() {
+        const currentReel = reels[currentReelIndex];
+        alert(`Sharing ${currentReel.id}`);
+        // Implement share functionality here
+    };
+
+    window.commentReel = function() {
+        const currentReel = reels[currentReelIndex];
+        const comment = prompt('Enter your comment:');
+        if (comment) {
+            alert(`Commenting on ${currentReel.id}: ${comment}`);
+            // Implement comment functionality here
         }
+    };
+});
+function showCategory(category) {
+    var categories = document.getElementsByClassName('podcast-content');
+    for (var i = 0; i < categories.length; i++) {
+        categories[i].style.display = 'none';
+    }
+    document.getElementById(category).style.display = 'flex';
+}
 
-        // Initial form setup
-        switchForm();
+function playPodcast(audioSrc) {
+    var podcastPlayer = document.getElementById('podcastPlayer');
+    podcastPlayer.src = audioSrc;
+    podcastPlayer.style.display = 'block';
+    podcastPlayer.play();
+}
+// Example of DJ schedule
+const djSchedule = [
+    { startTime: '06:00', endTime: '10:00', imageUrl: 'dj1.jpg', streamUrl: 'stream-url-1.mp3' },
+    { startTime: '10:00', endTime: '14:00', imageUrl: 'dj2.jpg', streamUrl: 'stream-url-2.mp3' },
+    { startTime: '14:00', endTime: '18:00', imageUrl: 'dj3.jpg', streamUrl: 'stream-url-3.mp3' },
+    // Add more schedules as needed
+];
+
+// Function to update DJ image and stream based on current time
+function updateLiveStream() {
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+    const currentMinutes = currentTime.getMinutes();
+    const currentTimeString = `${currentHour.toString().padStart(2, '0')}:${currentMinutes.toString().padStart(2, '0')}`;
+
+    for (const schedule of djSchedule) {
+        if (currentTimeString >= schedule.startTime && currentTimeString < schedule.endTime) {
+            document.getElementById('dj-image').src = schedule.imageUrl;
+            const liveStreamPlayer = document.getElementById('liveStreamPlayer');
+            liveStreamPlayer.src = schedule.streamUrl;
+            liveStreamPlayer.play();
+            break;
+        }
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const footer = document.querySelector('footer');
+    const contactSection = document.getElementById('contact');
+
+    function checkFooterVisibility() {
+        const contactRect = contactSection.getBoundingClientRect();
+        const isInViewport = (
+            contactRect.top >= 0 &&
+            contactRect.left >= 0 &&
+            contactRect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            contactRect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+
+        if (isInViewport) {
+            footer.style.display = 'block';
+        } else {
+            footer.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('scroll', checkFooterVisibility);
+    window.addEventListener('resize', checkFooterVisibility);
+    checkFooterVisibility(); // Initial check
+});
+
+// Initial update and set interval to check every minute
+updateLiveStream();
+setInterval(updateLiveStream, 60000);
+
     </script>
 </body>
 </html>
