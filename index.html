@@ -1,9 +1,267 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Hello World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HarmonyAI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-side {
+    flex: 1;
+    position: relative;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+    background: url(Web-images/harmony.jpg) center/cover;
+}
+
+.left-side h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.left-side p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.right-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-container {
+    width: 400px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-field input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    padding-left: 40px;
+}
+
+.input-field i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    color: #888;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.bottom-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bottom-text a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.bottom-text a:hover {
+    text-decoration: underline;
+}
+
+.form-link {
+    color: #4CAF50;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.form-link:hover {
+    text-decoration: underline;
+}
+
+.message {
+    margin-top: 10px;
+    color: red;
+}
+
+    </style>
 </head>
 <body>
-	<h1>Hello, World!</h1>
+    <div class="container">
+        <div class="left-side">
+            <h1>Welcome to HarmonyAI</h1>
+            <p>HarmonyAI is an AI-driven platform for stress detection and management. Expect personalized advice and interactive activities to help you manage stress effectively.</p>
+        </div>
+        <div class="right-side">
+            <div class="form-container" id="formContainer">
+                <h1 id="formTitle">Sign Up</h1>
+                <form id="form" onsubmit="return submitForm()">
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" id="registerUsername" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" id="registerEmail" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" id="registerPassword" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirm Password" id="registerConfirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn" id="submitButton">Sign Up</button>
+                </form>
+                <div class="bottom-text">
+                    <p id="switchText">Already have an account? <a href="#" class="form-link" onclick="switchForm()">Log In</a></p>
+                </div>
+                <div id="registerMessage" class="message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        function switchForm() {
+            const formContainer = document.getElementById('formContainer');
+            formContainer.innerHTML = '';
+            if (formContainer.dataset.formType === 'login') {
+                formContainer.innerHTML = `
+                    <h1 id="formTitle">Sign Up</h1>
+                    <form id="form" onsubmit="return submitForm('register')">
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Username" id="registerUsername" required>
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email" id="registerEmail" required>
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" id="registerPassword" required>
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Confirm Password" id="registerConfirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn" id="submitButton">Sign Up</button>
+                    </form>
+                    <div class="bottom-text">
+                        <p id="switchText">Already have an account? <a href="#" class="form-link" onclick="switchForm()">Log In</a></p>
+                    </div>
+                    <div id="registerMessage" class="message"></div>
+                `;
+                formContainer.dataset.formType = 'register';
+            } else {
+                formContainer.innerHTML = `
+                    <h1 id="formTitle">Log In</h1>
+                    <form id="form" onsubmit="return submitForm('login')">
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Username" id="loginUsername" required>
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn" id="submitButton">Log In</button>
+                    </form>
+                    <div class="bottom-text">
+                        <p id="switchText">Don't have an account? <a href="#" class="form-link" onclick="switchForm()">Sign Up</a></p>
+                    </div>
+                    <div id="loginMessage" class="message"></div>
+                `;
+                formContainer.dataset.formType = 'login';
+            }
+        }
+
+        function submitForm(formType) {
+            if (formType === 'register') {
+                const username = document.getElementById("registerUsername").value;
+                const email = document.getElementById("registerEmail").value;
+                const password = document.getElementById("registerPassword").value;
+                const confirmPassword = document.getElementById("registerConfirmPassword").value;
+
+                if (password !== confirmPassword) {
+                    document.getElementById("registerMessage").textContent = "Passwords do not match.";
+                    return false;
+                }
+
+                if (users.some(user => user.username === username)) {
+                    document.getElementById("registerMessage").textContent = "Username already exists. Please choose a different username.";
+                    return false;
+                }
+
+                const newUser = { username, email, password };
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+
+                document.getElementById("registerMessage").textContent = "Account created successfully. You can now log in.";
+            } else if (formType === 'login') {
+                const username = document.getElementById("loginUsername").value;
+                const password = document.getElementById("loginPassword").value;
+
+                const user = users.find(user => user.username === username && user.password === password);
+
+                if (user) {
+                    document.getElementById("loginMessage").textContent = "Login successful. Redirecting...";
+                    localStorage.setItem('currentUsername', username);
+                    window.location.href = "Home.htm"; // Redirect to the profile page or another destination
+                } else {
+                    document.getElementById("loginMessage").textContent = "Invalid username or password. Please try again.";
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
+        // Initial form setup
+        switchForm();
+    </script>
 </body>
 </html>
